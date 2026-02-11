@@ -164,8 +164,8 @@ publishMods {
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
         clientRequired = true
-        serverRequired = true
-        projectId = ""
+        serverRequired = false
+        projectId = "1459635"
         projectSlug = modid
         if (hasProperty("minecraft_supported_from")) {
             minecraftVersionRange {
@@ -180,7 +180,7 @@ publishMods {
 
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        projectId = ""
+        projectId = "lW22drsL"
         if (hasProperty("minecraft_supported_from")) {
             minecraftVersionRange {
                 start = prop("minecraft_supported_from")
