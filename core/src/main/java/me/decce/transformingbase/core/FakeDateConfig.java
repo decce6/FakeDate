@@ -8,11 +8,11 @@ import java.util.List;
 
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal", "unused"})
 public class FakeDateConfig {
-    @Comment("Specifie the year to fake (0 = disable)")
+    @Comment("Specifies the year to fake (0 = disable)")
     public int fakeYear = 0;
-    @Comment("Specifie the month to fake (0 = disable, 1 = January, 2 = February, ...)")
+    @Comment("Specifies the month to fake (0 = disable, 1 = January, 2 = February, ...)")
     public int fakeMonth = 0;
-    @Comment("Specifie the day to fake (0 = disable)")
+    @Comment("Specifies the day to fake (0 = disable)")
     public int fakeDayOfMonth = 0;
     @Comment("Only fake date when queried by specified mods\nUse * to allow any (not recommended)")
     public List<String> filter = List.of("enter_modid_here");
