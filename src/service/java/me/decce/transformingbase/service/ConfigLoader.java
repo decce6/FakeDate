@@ -3,7 +3,7 @@ package me.decce.transformingbase.service;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.toml.TomlFormat;
 import me.decce.transformingbase.constants.Constants;
-import me.decce.transformingbase.core.ExampleModConfig;
+import me.decce.transformingbase.core.FakeDateConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,7 +36,7 @@ public class ConfigLoader {
                 .build();
     }
 
-    public static void save(ExampleModConfig config) {
+    public static void save(FakeDateConfig config) {
         try (var night = toNightConfig(config)) {
             night.save();
         } catch (Exception e) {
@@ -44,11 +44,11 @@ public class ConfigLoader {
         }
     }
 
-    public static ExampleModConfig load() {
+    public static FakeDateConfig load() {
         return loadConfig();
     }
 
-    private static ExampleModConfig loadConfig() {
+    private static FakeDateConfig loadConfig() {
         if (CONFIG_FILE.toFile().exists()) {
             try {
                 return fromNightConfig();
@@ -56,20 +56,20 @@ public class ConfigLoader {
                 LOGGER.error("Failed to read configuration!", e);
             }
         }
-        return new ExampleModConfig();
+        return new FakeDateConfig();
     }
 
-    private static CommentedFileConfig toNightConfig(ExampleModConfig config) {
+    private static CommentedFileConfig toNightConfig(FakeDateConfig config) {
         var night = makeNightConfig();
         try {
-            for (Field field : ExampleModConfig.class.getDeclaredFields()) {
+            for (Field field : FakeDateConfig.class.getDeclaredFields()) {
                 var modifiers = field.getModifiers();
                 if (Modifier.isStatic(modifiers) || Modifier.isTransient(modifiers) || Modifier.isFinal(modifiers)) {
                     continue;
                 }
                 night.set(field.getName(), field.get(config));
-                if (field.isAnnotationPresent(ExampleModConfig.Comment.class)) {
-                    night.setComment(field.getName(), field.getAnnotation(ExampleModConfig.Comment.class).value());
+                if (field.isAnnotationPresent(FakeDateConfig.Comment.class)) {
+                    night.setComment(field.getName(), field.getAnnotation(FakeDateConfig.Comment.class).value());
                 }
             }
         } catch (Exception e) {
@@ -78,11 +78,11 @@ public class ConfigLoader {
         return night;
     }
 
-    private static ExampleModConfig fromNightConfig() {
-        var config = new ExampleModConfig();
+    private static FakeDateConfig fromNightConfig() {
+        var config = new FakeDateConfig();
         try (var night = makeNightConfig()) {
             night.load();
-            for (Field field : ExampleModConfig.class.getDeclaredFields()) {
+            for (Field field : FakeDateConfig.class.getDeclaredFields()) {
                 var modifiers = field.getModifiers();
                 if (Modifier.isStatic(modifiers) || Modifier.isTransient(modifiers) || Modifier.isFinal(modifiers)) {
                     continue;
