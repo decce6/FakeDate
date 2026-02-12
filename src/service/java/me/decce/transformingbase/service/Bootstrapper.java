@@ -7,10 +7,8 @@ import me.decce.transformingbase.transform.TransformerDefinition;
 import net.lenni0451.reflect.Agents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
 
 import java.lang.instrument.Instrumentation;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.CodeSource;
@@ -53,7 +51,7 @@ public class Bootstrapper {
                 return AgentLoader.load(path);
             }
             else {
-                LOGGER.warn("Could not find mod jar, using fallback method for instrumentation");
+                LOGGER.debug("Could not find mod jar, using fallback method for instrumentation");
                 return Agents.getInstrumentation();
             }
         }
@@ -66,8 +64,15 @@ public class Bootstrapper {
         var location = codeSource.getLocation();
         try {
             return Paths.get(location.toURI()).toFile().getAbsolutePath();
-        } catch (UnsupportedOperationException | URISyntaxException uoe) {
-            if ("union".equals(location.getProtocol())) {
+        } catch (Throwable throwable) {
+            return getParsedAgentPath(codeSource);
+        }
+    }
+
+    private static String getParsedAgentPath(CodeSource codeSource) {
+        var location = codeSource.getLocation();
+        if ("union".equals(location.getProtocol())) {
+            try {
                 var path = location.getPath();
                 if (path.contains("%")) {
                     String parsed = path.substring(0, path.indexOf('%'));
@@ -76,7 +81,8 @@ public class Bootstrapper {
                     }
                 }
             }
-            return null;
+            catch (Throwable ignored) {}
         }
+        return null;
     }
 }
