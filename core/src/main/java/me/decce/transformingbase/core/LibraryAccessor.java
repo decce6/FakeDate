@@ -10,6 +10,8 @@ public class LibraryAccessor {
     public static MethodHandle logWarnString;
     public static MethodHandle logWarnObject;
     public static MethodHandle logWarnStringObject;
+    public static MethodHandle logWarnStringObject2;
+    public static MethodHandle logWarnStringObject5;
     public static MethodHandle logErrorString;
     public static MethodHandle logErrorObject;
     public static MethodHandle logErrorStringObject;
@@ -63,6 +65,22 @@ public class LibraryAccessor {
     public static void warn(Object o) {
         try {
             logWarnObject.invoke(logger, o);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public static void warn(String s, Object o1, Object o2) {
+        try {
+            logWarnStringObject2.invoke(logger, s, o1, o2);
+        } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    public static void warn(String s, Object o1, Object o2, Object o3, Object o4, Object o5) {
+        try {
+            logWarnStringObject5.invoke(logger, s, o1, o2, o3, o4, o5);
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }

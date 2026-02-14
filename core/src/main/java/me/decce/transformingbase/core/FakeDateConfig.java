@@ -16,6 +16,10 @@ public class FakeDateConfig {
     public int fakeDayOfMonth = 0;
     @Comment("Only fake date when queried by specified mods\nUse * to allow any (not recommended)")
     public List<String> filter = List.of("enter_modid_here");
+    @Comment("When enabled, prints verbose information when faking date")
+    public boolean debugFakingDate;
+    @Comment("When enabled, prints verbose information when not faking date (mod not in filter)")
+    public boolean debugNonFakingDate;
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)

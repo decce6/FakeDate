@@ -26,6 +26,8 @@ public class PostBootstrapper {
         LibraryAccessor.logWarnString = unreflect(() -> Logger.class.getMethod("warn", String.class));
         LibraryAccessor.logWarnObject = unreflect(() -> Logger.class.getMethod("warn", Object.class));
         LibraryAccessor.logWarnStringObject = unreflect(() -> Logger.class.getMethod("warn", String.class, Object.class));
+        LibraryAccessor.logWarnStringObject2 = unreflect(() -> Logger.class.getMethod("warn", String.class, Object.class, Object.class));
+        LibraryAccessor.logWarnStringObject5 = unreflect(() -> Logger.class.getMethod("warn", String.class, Object.class, Object.class, Object.class, Object.class, Object.class));
         LibraryAccessor.logErrorString = unreflect(() -> Logger.class.getMethod("error", String.class));
         LibraryAccessor.logErrorObject = unreflect(() -> Logger.class.getMethod("error", Object.class));
         LibraryAccessor.logErrorStringObject = unreflect(() -> Logger.class.getMethod("error", String.class, Object.class));
