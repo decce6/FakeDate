@@ -19,4 +19,8 @@ fakeDayOfMonth = 0
 #Only fake date when queried by specified mods
 #Use * to allow any (not recommended)
 filter = ["enter_modid_here"]
+#When enabled, prints verbose information when faking date
+debugFakingDate = true
+#When enabled, prints verbose information when not faking date (mod is not in filter)
+debugNonFakingDate = true
 ```
