@@ -3,7 +3,6 @@ modLoader = "javafml"
 loaderVersion = "[2,)"
 issueTrackerURL = "https://github.com/decce6/${modid}/issues"
 license = "${mod_license}"
-clientSideOnly = true
 
 [[mods]]
 modId = "${modid}"
@@ -14,6 +13,7 @@ logoFile="${modid}.png"
 logoBlur = false
 description = '''${mod_description}'''
 authors = "decce"
+displayTest = "NONE"
 
 [[dependencies.${modid}]]
 modId = "minecraft"
