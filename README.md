@@ -24,3 +24,7 @@ debugFakingDate = true
 #When enabled, prints verbose information when not faking date (mod is not in filter)
 debugNonFakingDate = true
 ```
+
+## Side Requirement
+
+This mod does not have strict side requirements. This means it is possible to install the mod on the client-side without it being present on the dedicated server, and vice versa. The date will only be faked for the side(s) with the mod installed.
