@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Fixed JiJ discovery on Forge (lazyyyyy compatibility)
+
 ## 1.0.3
 
 - [1.21.1 NeoForge] Fixed `java.nio.file.ProviderNotFoundException: Provider "jar" not found` errors caused by the mod
