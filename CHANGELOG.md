@@ -1,3 +1,7 @@
+## 1.0.5
+
+Fixed crash at startup on certain environments.
+
 ## 1.0.4
 
 - Fixed JiJ discovery on Forge (lazyyyyy compatibility)
