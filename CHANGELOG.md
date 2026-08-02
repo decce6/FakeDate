@@ -1,3 +1,10 @@
+## 1.1.0
+
+- Properly released the fix for crash at startup on certain environments
+- Bumped Reflect and ClassTransform
+- Fixed the issue where the build for 1.20.1-fabric cannot be used on Java 17
+- Backported to 1.19.2 and 1.18.2
+
 ## 1.0.5
 
 Fixed crash at startup on certain environments.
