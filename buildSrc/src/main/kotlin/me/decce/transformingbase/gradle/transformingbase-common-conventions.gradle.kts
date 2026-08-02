@@ -50,10 +50,10 @@ dependencies {
     shade("me.decce.transformingbase:core") {
         isTransitive = false
     }
-    shade("net.lenni0451.classtransform:core:1.15.0-SNAPSHOT") {
+    shade("net.lenni0451.classtransform:core:1.15.1") {
         isTransitive = false
     }
-    shade("net.lenni0451:Reflect:1.6.2")
+    shade("net.lenni0451:Reflect:1.6.4")
     shade("com.electronwill.night-config:core:3.8.3")
     shade("com.electronwill.night-config:toml:3.8.3")
 }
@@ -163,8 +163,8 @@ publishMods {
     }
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-        clientRequired = true
-        serverRequired = false
+        client = true
+        server = true
         projectId = "1459635"
         projectSlug = modid
         if (hasProperty("minecraft_supported_from")) {
@@ -181,6 +181,7 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         projectId = "lW22drsL"
+        environment = CLIENT_OR_SERVER_PREFERS_BOTH
         if (hasProperty("minecraft_supported_from")) {
             minecraftVersionRange {
                 start = prop("minecraft_supported_from")
